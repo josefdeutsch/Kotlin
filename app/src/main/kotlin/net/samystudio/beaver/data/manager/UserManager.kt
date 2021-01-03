@@ -23,10 +23,12 @@ class UserManager @Inject constructor(
     private val sharedPreferencesHelper: SharedPreferencesHelper,
     private val authenticationApiInterfaceImpl: AuthenticatorApiInterfaceImpl,
     private val userApiInterfaceImpl: UserApiInterfaceImpl,
-    private val userDao: UserDao,
-) : TrimMemory {
-    private val _statusObservable: BehaviorSubject<Boolean> =
-        BehaviorSubject.createDefault(isConnected)
+    private val userDao: UserDao, ) : TrimMemory
+
+    {
+
+    private val _statusObservable: BehaviorSubject<Boolean> = BehaviorSubject.createDefault(isConnected)
+
     val statusObservable: Observable<Boolean> = _statusObservable.distinctUntilChanged()
     private val _userObservable = BehaviorSubject.create<User>()
     val userObservable: Observable<User> = _userObservable.distinctUntilChanged()
